@@ -21,7 +21,7 @@ public class PlaneMeshColliderUpdater : MonoBehaviour
     void OnEnable()
     {
         _plane.boundaryChanged += OnBoundaryChanged;
-        // Also update immediately in case plane already had a mesh
+         
         UpdateCollider();
     }
 
@@ -37,13 +37,13 @@ public class PlaneMeshColliderUpdater : MonoBehaviour
 
     void UpdateCollider()
     {
-        // The ARPlaneMeshVisualizer keeps an internal mesh; get it from MeshFilter.
+         
         Mesh mesh = _meshFilter.sharedMesh;
         if (mesh == null)
             return;
 
-        // Important: assigning sharedMesh directly avoids allocating new Mesh every frame.
-        _meshCollider.sharedMesh = null; // clear first to avoid Unity warning on some versions
+         
+        _meshCollider.sharedMesh = null;  
         _meshCollider.sharedMesh = mesh;
     }
 }

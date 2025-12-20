@@ -8,7 +8,7 @@ public class BallHitTesting : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-            ScoreManager.Instance.OnMiss();
+            ShotManager.instance.HandleMiss();
 
         ContactPoint contact = collision.contacts[0];
         Vector3 hitPoint = contact.point;

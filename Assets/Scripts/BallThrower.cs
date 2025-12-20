@@ -37,11 +37,14 @@ public class BallThrower : MonoBehaviour
 
         if (swipeDistance < minSwipePixels) return;
 
-        // --- normalize inputs ---
+
+        // clambing distance and time
         float distance01 = Mathf.Clamp01(swipeDistance / maxSwipeDistance);
         float time01 = Mathf.Clamp01(holdTime / maxHoldTime);
 
-        // --- direction ---
+
+
+        // dealing direction
         Vector3 dir =
             cam.forward +
             cam.right * (swipe.x / Screen.height) * sideInfluence +
@@ -49,7 +52,9 @@ public class BallThrower : MonoBehaviour
 
         dir.Normalize();
 
-        // --- force separation ---
+
+
+        // dealing force
         float forwardForce = forwardPower * distance01;
         float upForce = time01 * extraUpForceMax;
 
@@ -75,21 +80,14 @@ public class BallThrower : MonoBehaviour
         throwStartPosition = rb.position;
         //isInFlight = true;
         Debug.Log("Throwed");
-        ScoreManager.Instance.OnShotStarted(rb.gameObject);
+
+
+
+        // calling shot
+        ShotManager.instance.StartShot(ballPrefab);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!isInFlight) return;
-
-        isInFlight = false;
-
-        // later:
-        // measure distance
-        // notify coordinator
-        // spawn hit marker
-    }
-
+    
     public void Backup()
     {
         rb.isKinematic = true;

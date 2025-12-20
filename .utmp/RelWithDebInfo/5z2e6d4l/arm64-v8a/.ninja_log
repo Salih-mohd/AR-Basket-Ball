@@ -1,10 +1,19 @@
 # ninja log v5
+3987	4237	7872407104725187	D:/Projects 21 to 30/AR Basket Ball/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5z2e6d4l/obj/arm64-v8a/libgame.so	d7d44d6a03745158
 62	3149	7872407093581380	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	92c2276a77477af3
 78	3164	7872407093712710	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	69f867489f123376
-1	3188	7872407093732816	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	7478d71a10276c90
-106	3217	7872407094429944	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	61b686f31c69beb
-37	3327	7872407095569640	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ae8670e7eff0067
-49	3713	7872407099446380	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d05cde13d2b76ed7
 91	3728	7872407099501648	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	152423d248cc314b
+1	3188	7872407093732816	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	7478d71a10276c90
+37	3327	7872407095569640	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ae8670e7eff0067
+106	3217	7872407094429944	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	61b686f31c69beb
+49	3713	7872407099446380	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d05cde13d2b76ed7
 16	3987	7872407102243637	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1daae5913c807356
-3987	4237	7872407104725187	D:/Projects 21 to 30/AR Basket Ball/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5z2e6d4l/obj/arm64-v8a/libgame.so	d7d44d6a03745158
+38	2418	7877752633599578	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	7478d71a10276c90
+54	2422	7877752633579211	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	69f867489f123376
+62	2431	7877752633579211	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	92c2276a77477af3
+69	2438	7877752633845161	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	61b686f31c69beb
+47	2443	7877752633926470	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	ae8670e7eff0067
+78	2581	7877752635380117	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d05cde13d2b76ed7
+86	2601	7877752635634618	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	152423d248cc314b
+13	2683	7877752636430153	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1daae5913c807356
+2684	2885	7877752638479148	D:/Projects 21 to 30/AR Basket Ball/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5z2e6d4l/obj/arm64-v8a/libgame.so	d7d44d6a03745158

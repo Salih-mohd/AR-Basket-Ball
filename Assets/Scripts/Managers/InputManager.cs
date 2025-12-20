@@ -1,7 +1,9 @@
 using System;
 using Newtonsoft.Json.Bson;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class InputManager : MonoBehaviour
 {
@@ -41,18 +43,18 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        ScoreManager.Instance.OnShotStart += DisableSwipeAction;
-        ScoreManager.Instance.OnShotFinish += EnableSwipeAction;
+        ShotManager.instance.OnShotStarted += DisableSwipeAction;
+        ShotManager.instance.OnShotFinished += EnableSwipeAction;
 
-        ScoreManager.Instance.GameOver += DisableThrowMap;
+        ShotManager.instance.OnGameOver += DisableThrowMap;
     }
 
     private void OnEnable()
     {
+
+        EnhancedTouchSupport.Enable();
         pressAction.started += OnPressStarted;
         pressAction.canceled += OnPressCanceled;
-
-        
 
     }
 
@@ -71,6 +73,19 @@ public class InputManager : MonoBehaviour
         isPressing = true;
         startPosition = positionAction.ReadValue<Vector2>();
         startTime = Time.time;
+
+        Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+
+        Debug.Log("Touched at: " + touchPos);
+
+        if (touchPos != null)
+        {
+            OnTap?.Invoke(touchPos);
+        }
+        else
+            Debug.Log("touch position is null");
+        
+
     }
 
     private void OnPressCanceled(InputAction.CallbackContext context)
@@ -86,7 +101,7 @@ public class InputManager : MonoBehaviour
 
         if (distance <= tapThresholdPixels)
         {
-            OnTap?.Invoke(endPosition);
+            //OnTap?.Invoke(endPosition);
             Debug.Log("on tap event invoked");
         }
         else
@@ -121,9 +136,9 @@ public class InputManager : MonoBehaviour
     private void OnDestroy()
     {
         // events managing actions
-        ScoreManager.Instance.OnShotStart -= DisableSwipeAction;
-        ScoreManager.Instance.OnShotFinish -= EnableSwipeAction;
+        ShotManager.instance.OnShotStarted -= DisableSwipeAction;
+        ShotManager.instance.OnShotFinished -= EnableSwipeAction;
 
-        ScoreManager.Instance.GameOver -= DisableThrowMap;
+        ShotManager.instance.OnGameOver -= DisableThrowMap;
     }
 }

@@ -1033,7 +1033,7 @@
                     "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Touch",
                     "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false

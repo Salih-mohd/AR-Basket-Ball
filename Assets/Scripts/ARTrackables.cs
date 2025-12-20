@@ -23,19 +23,19 @@ public class ARTrackables : MonoBehaviour
         foreach (var plane in changes.added)
         {
             // handle added planes
-            Debug.Log("added planes");
+           // Debug.Log("added planes");
         }
 
         foreach (var plane in changes.updated)
         {
             // handle updated planes
-            Debug.Log("updated planes");
+            //Debug.Log("updated planes");
         }
 
         foreach (var plane in changes.removed)
         {
             // handle removed planes
-            Debug.Log("removed planes");
+            //Debug.Log("removed planes");
         }
     }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class HoopScoreTrigger : MonoBehaviour
 {
+    public GameObject scoreSpawnPos;
 
     public Vector3 positionOfBall;
     private void OnTriggerEnter(Collider other)
@@ -15,8 +16,9 @@ public class HoopScoreTrigger : MonoBehaviour
         // Ensure ball is moving downward (prevents cheating)
         if (ballRb.linearVelocity.y < 0f)
         {
-            ScoreManager.Instance.OnBasketScored();
-            Debug.Log("called score methdo");
+
+            ShotManager.instance.RegisterScore(scoreSpawnPos);
+            //Debug.Log("called score methdo");
             StartCoroutine(SettingOff(other.gameObject));
 
         }

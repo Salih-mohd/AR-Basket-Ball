@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec464b30fd4981498099910b3f11900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoopScoreTrigger
+  scoreSpawnPos: {fileID: 6444372784891893514}
   positionOfBall: {x: 0, y: -0.41000003, z: 1.22}
 --- !u!1 &6509519767887395264
 GameObject:
@@ -263,14 +264,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6509519767887395264}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.12747, y: -0.030999899, z: 2.26}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 647080924870206587}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6971097071711949075
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7927715248387637946}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.9509999, z: -0.47599995}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
@@ -395,7 +396,7 @@ Transform:
   - {fileID: 6673998634458033254}
   - {fileID: 2879322298936371357}
   m_Father: {fileID: 3501689604662530513}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8224735093451959825
 GameObject:
   m_ObjectHideFlags: 0
