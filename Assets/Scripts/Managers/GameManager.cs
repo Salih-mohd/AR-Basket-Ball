@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public event Action ScanningEvent;
     public event Action PlayingEvent;
 
+    public event Action GameOverEvent;
+
     private void Awake()
     {
         if (instance == null)
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
             case GameState.GameOver:
                 DisableThrow();
                 ballObject.SetActive(false);
+                GameOverEvent?.Invoke();
                 break;
 
 

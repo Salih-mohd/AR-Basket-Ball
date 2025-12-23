@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UITweanMainMenu : MonoBehaviour
 {
@@ -23,11 +24,37 @@ public class UITweanMainMenu : MonoBehaviour
     [Header("ball and hoop")]
     [SerializeField] private GameObject ball;
     [SerializeField] private GameObject hoop;
+
+
+    
     private void Start()
     {
         TweanBallAndHoop();
         FirstTweanIn();
+
+         
     }
+
+    private void OnEnable()
+    {
+        playButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            ManagerScene.instance.LoadScene(1);
+            AudioManager.Instance.PlayButtonSFX();
+            AudioManager.Instance.StopMusic();  
+        });
+    }
+
+    private void OnDisable()
+    {
+        playButton.GetComponent<Button>().onClick.RemoveListener(() =>
+        {
+            ManagerScene.instance.LoadScene(1);
+            AudioManager.Instance.PlayButtonSFX();
+            AudioManager.Instance.StopMusic();
+        });
+    }
+
 
     private void FirstTweanIn()
     {

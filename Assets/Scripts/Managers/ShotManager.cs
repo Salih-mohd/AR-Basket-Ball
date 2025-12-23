@@ -57,8 +57,10 @@ public class ShotManager : MonoBehaviour
         shotActive = true;
 
         OnShotStarted?.Invoke();
+        SoundCoordinator.Instance.Swiped();
 
-        if(shotCoroutine != null)
+
+        if (shotCoroutine != null)
             StopCoroutine(shotCoroutine);
 
         shotCoroutine = StartCoroutine(ShotTimeOutCoroutine());
@@ -79,6 +81,7 @@ public class ShotManager : MonoBehaviour
             StopCoroutine(shotCoroutine );
 
         OnShotScored?.Invoke(pos);
+        SoundCoordinator.Instance.Scored();
         FinishShot();
     }
 
@@ -105,6 +108,7 @@ public class ShotManager : MonoBehaviour
         ResetBall();
 
         OnShotMissed?.Invoke();
+        SoundCoordinator.Instance.MissedSound();
 
 
         FinishShot();
@@ -139,6 +143,7 @@ public class ShotManager : MonoBehaviour
             isGameOver = true;
             OnGameOver?.Invoke();
             GameManager.instance.SetState(GameState.GameOver);
+            ScoreManager.Instance.InvokingGameOverWithScore();
         }
     }
 

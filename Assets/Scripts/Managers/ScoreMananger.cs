@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class ScoreManager : MonoBehaviour
 
 
     //events
+    public event Action<int> OnGameOver;
+
+
 
     //public event Action OnShotStart;
     //public event Action OnShotFinish;
@@ -36,7 +40,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private UITweanGamePlay UITweanAnim;
     [SerializeField] private ShotManager shotManager;
 
+    [Header("score ui reference")]
+    [SerializeField] private Image totalScoreImage;
+    [SerializeField] private TMP_Text totalScoreText;
 
+
+    
 
 
     public int TotalScore { get; private set; }
@@ -107,6 +116,9 @@ public class ScoreManager : MonoBehaviour
             // updating pop prfab
             txt.color = Color.greenYellow;
 
+            //updating totalscore image
+            totalScoreImage.color = Color.yellow;
+
 
             pointsToAdd += streakBonusScore;
             isOnFire = true;
@@ -118,15 +130,26 @@ public class ScoreManager : MonoBehaviour
             // updating pop prfab
             txt.color = Color.yellow;
 
+            // updating totalscore text
+            totalScoreImage.color = Color.greenYellow;
 
             pointsToAdd = onFireScore;
         }
         else
+        {
             txt.color = Color.green;
 
+            // updating totalscore text
+            
+
+        }
 
 
-            TotalScore += pointsToAdd;
+
+
+
+        TotalScore += pointsToAdd;
+        totalScoreText.text =$"XP {TotalScore}";
 
         txt.text=$"+{pointsToAdd}";
         popObj.SetActive(true);
@@ -142,9 +165,16 @@ public class ScoreManager : MonoBehaviour
     {
         CurrentStreak = 0;
         isOnFire = false;
-
+        totalScoreImage.color = Color.floralWhite;
         //Debug.Log("streak reset");
     }
+
+    public void InvokingGameOverWithScore()
+    {
+        Debug.Log("invoking InvokingGameOverWithScore");
+        OnGameOver?.Invoke(TotalScore);
+    }
+     
 
 
     // called from BallThrower

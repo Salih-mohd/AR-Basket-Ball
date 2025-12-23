@@ -66,9 +66,12 @@ public class ManagerScene : MonoBehaviour
             yield return null;
 
         loadingScreen.SetActive(false);
-        //Debug.Log("loading screen disabled");
+        //Debug.Log("loading screen disabled");      
+    }
 
-
-        
+    public void GoHome()
+    {
+        SceneManager.LoadSceneAsync(0);
+        AudioManager.Instance.PlayMenuMusic();
     }
 }

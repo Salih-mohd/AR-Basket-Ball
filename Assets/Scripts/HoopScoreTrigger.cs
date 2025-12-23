@@ -18,6 +18,7 @@ public class HoopScoreTrigger : MonoBehaviour
         {
 
             ShotManager.instance.RegisterScore(scoreSpawnPos);
+            
             //Debug.Log("called score methdo");
             StartCoroutine(SettingOff(other.gameObject));
 
