@@ -12,7 +12,7 @@ public class GettingScores : MonoBehaviour
     private void Start()
     {
         score1.text = $"1-> {PlayerPrefs.GetInt("HighScore1")}";
-        score2.text = $"1-> {PlayerPrefs.GetInt("HighScore2")}";
-        score3.text = $"1-> {PlayerPrefs.GetInt("HighScore3")}";
+        score2.text = $"2-> {PlayerPrefs.GetInt("HighScore2")}";
+        score3.text = $"3-> {PlayerPrefs.GetInt("HighScore3")}";
     }
 }

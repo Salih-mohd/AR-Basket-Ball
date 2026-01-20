@@ -10,7 +10,7 @@ public class ShotManager : MonoBehaviour
     [Header("Shot settings")]
 
     [SerializeField] private float shotTimeOut = 3.5f;
-    [SerializeField] private int maxThrows = 9;
+    [SerializeField] private int maxThrows = 3;
     [SerializeField] private Vector3 ballResetLocalPosition;
 
     // events
@@ -144,6 +144,7 @@ public class ShotManager : MonoBehaviour
             OnGameOver?.Invoke();
             GameManager.instance.SetState(GameState.GameOver);
             ScoreManager.Instance.InvokingGameOverWithScore();
+            AdsInitializer.Instance.ShowAd();
         }
     }
 

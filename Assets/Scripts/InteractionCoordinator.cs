@@ -31,6 +31,7 @@ public class InteractionCoordinator : MonoBehaviour
 
     private void HandleTap(Vector2 screenPos)
     {
+        //Debug.Log($"hoop placed-> {hoopPlaced}");
         if (hoopPlaced) return;
 
         hoopPlacer.Place(screenPos);   
@@ -43,6 +44,6 @@ public class InteractionCoordinator : MonoBehaviour
         if (!hoopPlaced) return;   
 
         ballThrower.Throw(start, end, duration);
-        Debug.Log("called throw");
+        //Debug.Log("called throw");
     }
 }

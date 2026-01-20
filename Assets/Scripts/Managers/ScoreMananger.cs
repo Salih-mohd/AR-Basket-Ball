@@ -171,8 +171,10 @@ public class ScoreManager : MonoBehaviour
 
     public void InvokingGameOverWithScore()
     {
-        Debug.Log("invoking InvokingGameOverWithScore");
+        //Debug.Log("invoking InvokingGameOverWithScore");
         OnGameOver?.Invoke(TotalScore);
+        LeaderBoardManager.Instance.SubmitScore(TotalScore); 
+        AchievementManager.Instance.CheckAchievements(TotalScore);
     }
      
 

@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
                 ScanningEvent?.Invoke();
 
-                Debug.Log("on scanning state");
+                //Debug.Log("on scanning state");
 
                 planeManager.enabled = true;
 
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
                 PlayingEvent?.Invoke();
 
-                Debug.Log("on playing state");
+               // Debug.Log("on playing state");
 
                 planeManager.enabled = false;
                 SetPlaneVisuals(false);
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     private void DisableThrow()
     {
 
-        Debug.Log(" disabling position action");
+        //Debug.Log(" disabling position action");
         if (throwAction.action.enabled)
             throwAction.action.Disable();
     }
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
     private void EnableThrow()
     {
 
-        Debug.Log("enabling position action");
+        //Debug.Log("enabling position action");
         StartCoroutine(ActivatePositionAction());
     }
 

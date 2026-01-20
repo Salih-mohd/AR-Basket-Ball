@@ -13,7 +13,7 @@ public class BallHitTesting : MonoBehaviour
         ContactPoint contact = collision.contacts[0];
         Vector3 hitPoint = contact.point;
 
-        if(cubePrefab!=null)
-            Instantiate(cubePrefab, hitPoint, Quaternion.identity);
+        //if(cubePrefab!=null)
+        //    Instantiate(cubePrefab, hitPoint, Quaternion.identity);
     }
 }

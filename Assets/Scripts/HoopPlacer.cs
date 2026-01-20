@@ -39,7 +39,7 @@ public class HoopPlacer : MonoBehaviour
             Quaternion hoopRotation = Quaternion.LookRotation(lookDir);
 
             // Vertical offset correction
-            float verticalOffset = 1.5f; // 2 cm
+            float verticalOffset = 1f; // 2 cm
             hitPose.position -= hitPose.up * verticalOffset;
 
             var obj=Instantiate(anchorPrefab,hitPose.position, hitPose.rotation);
@@ -51,7 +51,7 @@ public class HoopPlacer : MonoBehaviour
                 );
 
 
-            Debug.Log("Hoop placed");
+            //Debug.Log("Hoop placed");
             InteractionCoordinator.instance.hoopPlaced = true;
             GameManager.instance.SetState(GameState.Playing);
 

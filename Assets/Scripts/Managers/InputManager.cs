@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
 
         if (ScoreManager.Instance == null)
         {
-            Debug.Log("insance is null");
+            //Debug.Log("insance is null");
             return;
         }
 
@@ -47,6 +47,8 @@ public class InputManager : MonoBehaviour
         ShotManager.instance.OnShotFinished += EnableSwipeAction;
 
         ShotManager.instance.OnGameOver += DisableThrowMap;
+
+        EnableThrowMap();  
     }
 
     private void OnEnable()
@@ -69,28 +71,28 @@ public class InputManager : MonoBehaviour
 
     private void OnPressStarted(InputAction.CallbackContext context)
     {
-        Debug.Log("touched");
+        //Debug.Log("touched");
         isPressing = true;
         startPosition = positionAction.ReadValue<Vector2>();
         startTime = Time.time;
 
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
 
-        Debug.Log("Touched at: " + touchPos);
+        //Debug.Log("Touched at: " + touchPos);
 
         if (touchPos != null)
         {
             OnTap?.Invoke(touchPos);
         }
-        else
-            Debug.Log("touch position is null");
+        else { }
+           // Debug.Log("touch position is null");
         
 
     }
 
     private void OnPressCanceled(InputAction.CallbackContext context)
     {
-        Debug.Log("touch withdrawn");
+       // Debug.Log("touch withdrawn");
         if (!isPressing) return;
         isPressing = false;
 
@@ -102,25 +104,25 @@ public class InputManager : MonoBehaviour
         if (distance <= tapThresholdPixels)
         {
             //OnTap?.Invoke(endPosition);
-            Debug.Log("on tap event invoked");
+           // Debug.Log("on tap event invoked");
         }
         else
         {
             OnSwipe?.Invoke(startPosition, endPosition, duration);
-            Debug.Log("swap event invoked");
+            //Debug.Log("swap event invoked");
         }
     }
 
     public void DisableSwipeAction()
     {
         positionAction.Disable();
-        Debug.Log("disabled swipe action");
+        //Debug.Log("disabled swipe action");
     }
 
     public void EnableSwipeAction()
     {
         positionAction.Enable();
-        Debug.Log("enabled swipe action");
+       // Debug.Log("enabled swipe action");
     }
 
     public void DisableThrowMap()

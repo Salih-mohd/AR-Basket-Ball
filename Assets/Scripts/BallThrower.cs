@@ -79,7 +79,7 @@ public class BallThrower : MonoBehaviour
 
         throwStartPosition = rb.position;
         //isInFlight = true;
-        Debug.Log("Throwed");
+        //Debug.Log("Throwed");
 
 
 

@@ -11,6 +11,7 @@ public class UITweanMainMenu : MonoBehaviour
     [SerializeField] private Vector3 textStartScale ;
     [SerializeField] private Vector3 textEndScale ;
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject quiteButton;
 
     [Header("top Panel")]
     [SerializeField] private GameObject coinImage;
@@ -47,12 +48,16 @@ public class UITweanMainMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        playButton.GetComponent<Button>().onClick.RemoveListener(() =>
+        if(playButton != null)
         {
-            ManagerScene.instance.LoadScene(1);
-            AudioManager.Instance.PlayButtonSFX();
-            AudioManager.Instance.StopMusic();
-        });
+            playButton.GetComponent<Button>().onClick.RemoveListener(() =>
+            {
+                ManagerScene.instance.LoadScene(1);
+                AudioManager.Instance.PlayButtonSFX();
+                AudioManager.Instance.StopMusic();
+            });
+        }
+        
     }
 
 
@@ -62,7 +67,10 @@ public class UITweanMainMenu : MonoBehaviour
             .setEaseInOutQuint()
             .setOnComplete(() => 
             {
-                LeanTween.moveLocal(playButton, new Vector3(0, -200, 0), 1f)
+                LeanTween.moveLocal(playButton, new Vector3(0, -100, 0), 1f)
+                .setEaseInOutQuint();
+
+                LeanTween.moveLocal(quiteButton, new Vector3(0, -300, 0), 1f)
                 .setEaseInOutQuint()
                 .setOnComplete(() =>
                 {
@@ -154,5 +162,11 @@ public class UITweanMainMenu : MonoBehaviour
             });
 
     }
+
+    public void QuiteGame()
+    {
+        Application.Quit();
+    }
+   
 
 }

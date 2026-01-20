@@ -16,7 +16,7 @@ public class HighScoreManager : MonoBehaviour
         scores[1] = PlayerPrefs.GetInt(highScore2, 0);
         scores[2] = PlayerPrefs.GetInt(highScore3, 0);
 
-        Debug.Log($"high score is {scores[0]} middle score is {scores[1]} low score is {scores[2]}");
+        //Debug.Log($"high score is {scores[0]} middle score is {scores[1]} low score is {scores[2]}");
 
         
     }
@@ -35,7 +35,7 @@ public class HighScoreManager : MonoBehaviour
     public void UpdateScore(int newScore)
     {
 
-        Debug.Log(" updating score");
+        //Debug.Log(" updating score");
         for (int i = 0; i < scores.Length; i++)
         {
             if (newScore > scores[i])
@@ -48,7 +48,7 @@ public class HighScoreManager : MonoBehaviour
 
                 scores[i] = newScore;
                 SaveScores();
-                PrintScores();
+                //PrintScores();
                 return;
             }
         }
