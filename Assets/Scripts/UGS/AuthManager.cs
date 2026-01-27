@@ -6,13 +6,41 @@ using UnityEngine;
 
 public class AuthManager : MonoBehaviour
 {
-    async void Start()
-    {
-        await UnityServices.InitializeAsync();
 
-        // Register the Unity Player Accounts sign-in event handler after services initialization.
+    public static AuthManager Instance;
+    public GameObject loginButton;
+
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
         PlayerAccountService.Instance.SignedIn += SignInWithUnityAuth;
     }
+
+    private void OnDisable()
+    {
+        PlayerAccountService.Instance.SignedIn -= SignInWithUnityAuth;
+    }
+
+    void Start()
+    {
+        //await UnityServices.InitializeAsync();
+
+        // Register the Unity Player Accounts sign-in event handler after services initialization.
+        
+    }
+
 
     // Call this from a button or other application-specific trigger to begin the sign-in flow.
     public async void StartPlayerAccountsSignInAsync()
@@ -49,6 +77,7 @@ public class AuthManager : MonoBehaviour
         {
             await AuthenticationService.Instance.SignInWithUnityAsync(PlayerAccountService.Instance.AccessToken);
             Debug.Log("SignIn is successful.");
+            loginButton.SetActive(false);
         }
         catch (AuthenticationException ex)
         {

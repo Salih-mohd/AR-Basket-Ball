@@ -26,7 +26,7 @@ public class AnalyticsInit : MonoBehaviour
         EndUserConsent.SetConsentState(new ConsentState
         {
             AnalyticsIntent = ConsentStatus.Granted,
-            AdsIntent = ConsentStatus.Denied
+            AdsIntent = ConsentStatus.Granted
         });
 
         // Safe to send event now

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - RewardButton
+  - CoinText
+  - LoginButt
   layers:
   - Default
   - TransparentFX
