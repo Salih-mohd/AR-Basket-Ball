@@ -15,7 +15,10 @@ public class UGSManager : MonoBehaviour
     public GameObject loginButton;
     public string sceneName;
 
-    private async void Awake()
+    public GameObject consentPopup;
+    private bool consentSet = false;
+
+    private  void Awake()
     {
         if (Instance != null)
         {
@@ -28,12 +31,9 @@ public class UGSManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        await InitializeUGS();
+        Invoke("SettingConsentPop", 3);
     }
-    void Start()
-    {
-        
-    }
+    
 
 
     private void OnDestroy()
@@ -51,13 +51,13 @@ public class UGSManager : MonoBehaviour
         await UnityServices.InitializeAsync();
         Debug.Log("UGS Initialized");
 
-        EndUserConsent.SetConsentState(new ConsentState
-        {
-            AnalyticsIntent = ConsentStatus.Granted,
-            AdsIntent = ConsentStatus.Granted
-        });
+        //EndUserConsent.SetConsentState(new ConsentState
+        //{
+        //    AnalyticsIntent = ConsentStatus.Granted,
+        //    AdsIntent = ConsentStatus.Granted
+        //});
 
-        Debug.Log("Consent Granted");
+        //Debug.Log("Consent Granted");
 
         PlayerAccountService.Instance.SignedIn += OnPlayerAccountSignedIn;
     }
@@ -133,5 +133,37 @@ public class UGSManager : MonoBehaviour
                 UpdateLoginUI();
         }
     }
-    
+
+    private void SetConsent(bool granted)
+    {
+        EndUserConsent.SetConsentState(new ConsentState
+        {
+            AnalyticsIntent = granted ? ConsentStatus.Granted : ConsentStatus.Denied,
+            AdsIntent = granted ? ConsentStatus.Granted : ConsentStatus.Denied
+        });
+
+        consentSet = true;
+
+        Debug.Log("Consent set: " + granted);
+    }
+
+
+    public async void OnConsentAccepted()
+    {
+        SetConsent(true);
+        consentPopup.SetActive(false);
+        await InitializeUGS();
+    }
+
+    public async void OnConsentDeclined()
+    {
+        SetConsent(false);
+        consentPopup.SetActive(false);
+        await InitializeUGS();
+    }
+
+    private void SettingConsentPop()
+    {
+        consentPopup.SetActive(true);
+    }
 }

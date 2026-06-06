@@ -39,12 +39,6 @@ public class RewardedADs : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
        
     }
 
-
-    private void OnEnable()
-    {
-        
-    }
-
     // Call this public method when you want to get an ad ready to show.
     public void LoadAd()
     {

@@ -30,6 +30,8 @@ public class CoinManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        //ResetCoins(0);
+
     }
 
     
@@ -49,6 +51,7 @@ public class CoinManager : MonoBehaviour
         coins += amount;
         SaveCoins();
         UpdateUI();
+        MainMenuAchieveManager.Instance.CheckCoinAchievements(coins);
     }
 
     public int GetCoins()
@@ -118,6 +121,15 @@ public class CoinManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void ResetCoins(int amount = 0)
+    {
+        coins = amount;
+        PlayerPrefs.SetInt(COIN_KEY, coins);
+        PlayerPrefs.Save();
+        UpdateUI();
+        Debug.Log("coin reseted "+ coins);
     }
 
 

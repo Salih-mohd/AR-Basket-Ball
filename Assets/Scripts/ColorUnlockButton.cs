@@ -16,13 +16,17 @@ public class ColorUnlockButton : MonoBehaviour
     private void Awake()
     {
         prefKey = "COLOR_UNLOCKED_" + hexColor.Replace("#", "");
+        //ResetUnlockState();
         LoadState();
+
+
     }
 
     public void OnButtonClicked()
     {
         if (IsUnlocked())
         {
+            Debug.Log("unlocked");
             ApplyColor();
             return;
         }
@@ -37,9 +41,9 @@ public class ColorUnlockButton : MonoBehaviour
         Unlock();
     }
 
-    // ------------------------
+  
     // Core Logic
-    // ------------------------
+    
 
     private void Unlock()
     {
@@ -82,14 +86,20 @@ public class ColorUnlockButton : MonoBehaviour
         UpdateUI(unlocked);
     }
 
-    // ------------------------
     // UI
-    // ------------------------
+    
 
     private void UpdateUI(bool unlocked)
     {
         if (statusText == null) return;
 
         statusText.text = unlocked ? "OWNED" : coinNeeded.ToString();
+    }
+
+    // UI reset
+    private void ResetUnlockState()
+    {
+        PlayerPrefs.DeleteKey(prefKey);
+        UpdateUI(false);
     }
 }
